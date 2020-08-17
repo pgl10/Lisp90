@@ -345,7 +345,6 @@ std::vector<std::string> loadFile() {
     strLine = "";
     while (getline(ifs, buffer)) {
         buffer = Trim(buffer);
-        if(buffer.substr(0, 4) == ";;;;") buffer = "";
         size_t first = buffer.find_first_of(";;");
         if(std::string::npos != first)  buffer = buffer.substr(0, first);
         first = buffer.find_first_of(";");
@@ -412,7 +411,6 @@ void repl(const std::string & prompt, environment * env) {
     for (;;) {
         std::cout << prompt;
         std::string line; std::getline(std::cin, line);
-        if(line.substr(0, 4) == ";;;;") line = "";
         size_t first = line.find_first_of(";;");
         if(std::string::npos != first)  line = line.substr(0, first);
         first = line.find_first_of(";");
